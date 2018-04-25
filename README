@@ -1,0 +1,34 @@
+== PGFem3D Deployment Image ==
+
+=== Requirements ===
+  * Docker environment with external network connectivity
+
+=== Quick Start ===
+
+Within this directory, run:
+
+ > docker build -t "cswarm:pgfem3d" .
+
+Docker will pull the required base image and begin building the
+PGFem3D software.  This may take a consderable amount of time
+depending on your hardware.  15m to 1h is common.
+
+Software is installed to the /opt prefix in the container image.
+
+Once the build is complete, you may launch PGFem3d from within your
+docker container.  For example:
+
+ > docker ps -a      # to list images
+ > docker run "cswarm:pgfem3d" /opt/pgfem-3d/bin/PGFem3D -SS
+
+For an interactive shell in your container:
+
+ > docker run -ti "cswarm:pgfem3d" /bin/bash
+ > cd pgfem-3d
+ > make check
+
+Launching Paraview (assuming ssh with X11 forwarding to docker server host):
+
+ > docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/home/cswarm/.Xauthority:rw" "cswarm:pgfem3d" paraview
+
+
