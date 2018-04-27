@@ -33,7 +33,7 @@ To run the example:
    and follow the README located therein
  > docker commit CONTAINER_ID cswarm:pgfem3d # to commit the changes to cswarm:pgfem3d, this can be done from a separte terminal
 
-To visualize the example output
+To visualize the example output:
  Launch Paraview (assuming ssh with X11 forwarding to docker server host)
 
  On Windows
@@ -41,7 +41,7 @@ To visualize the example output
 
  On Mac
  > open -a XQuartz 
- X11 Preferences -> Security -> enable "Allow connection from network clients"
+   X11 Preferences -> Security -> enable "Allow connection from network clients"
  > defaults write org.macosforge.xquartz.X11 enable_iglx -bool true # without iglx, paraview gets frozen
  > xhost + $(hostname)
  > docker run --net=host -e DISPLAY=$(hostname):0 --volume="$HOME/.Xauthority:/home/cswarm/.Xauthority:rw" "cswarm:pgfem3d" paraview &
