@@ -29,7 +29,7 @@ RUN curl -O https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-
 RUN git clone -b develop https://github.com/C-SWARM/ttl.git
 RUN git clone -b develop https://github.com/C-SWARM/gcm.git
 RUN git clone -b develop https://github.com/C-SWARM/pgfem-3d.git
-RUN git clone -b develop https://github.com/C-SWARM/pgfem-3d-examples.git
+RUN git clone -b master https://github.com/C-SWARM/pgfem-3d-examples.git
 
 ADD mkl_silent.cfg .
 
