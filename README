@@ -2,6 +2,7 @@
 
 === Requirements ===
   * Docker environment with external network connectivity
+    https://www.docker.com/community-edition    
 
 === Quick Start ===
 
@@ -29,6 +30,11 @@ For an interactive shell in your container:
 
 Launching Paraview (assuming ssh with X11 forwarding to docker server host):
 
+On Windows
  > docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/home/cswarm/.Xauthority:rw" "cswarm:pgfem3d" paraview
 
-
+On Mac
+ X11 Preferences -> Security -> enable "Allow connection from network clients"
+ > open -a XQuartz
+ > xhost + $(hostname)
+ > docker run --net=host -e DISPLAY=$(hostname):0 --volume="$HOME/.Xauthority:/home/cswarm/.Xauthority:rw" "cswarm:pgfem3d" paraview
