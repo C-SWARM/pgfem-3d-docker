@@ -27,7 +27,7 @@ user@host~$ docker run "cswarm:pgfem3d" /opt/pgfem-3d/bin/PGFem3D -SS
 In order to build, run, and visualize output from an interactive shell in your
 container:
  * For X forwarding from the docker container, Mac OS X users must first follow
-   XQuartz instructions at the end of rthis document.
+   XQuartz instructions at the end of this document.
 
 ```
 user@host~$ docker run --net=host -e DISPLAY --volume="$HOME/.Xauthority:/home/cswarm/.Xauthority:rw" -ti "cswarm:pgfem3d" /bin/bash
