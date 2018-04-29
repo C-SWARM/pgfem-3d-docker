@@ -31,22 +31,37 @@ For an interactive shell in your container:
 To run the example from the interactive shell:
 
  > cd pgfem-3d-examples 
- > ./local_makeset.pl clean -np 4  # to generate input for 4-core job 
- > ./run.sh                        # to run the example
- > docker commit CONTAINER_ID cswarm:pgfem3d # to commit the changes to cswarm:pgfem3d; please do this from a terminal on the host; execute "docker ps" for CONTAINER_ID
+ > ./local_makeset.pl clean -np 4  # to generate input (for 4-core job)
+ > ./run.sh 4                      # to run the example (for 4-core job)
 
-To visualize the example output, you firt need to launch Paraview (assuming ssh with X11 forwarding to docker server host)
+To visualize the resulting output, you need to commit the changes you just make
+when running the example, and then launch paraview from the host.
+
+In order to commit the changes, from a second terminal on the host (not the
+terminal inside the container).
+
+ > docker ps                       # to find the CONTAINER_ID to commit changes
+ > docker commit CONTAINER_ID cswarm:pgfem3d # to commit the changes to cswarm:pgfem3d
+
+Launch Paraview as a secondary session on the host.
 
  On Windows (use a terminal on the host)
  > docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/home/cswarm/.Xauthority:rw" "cswarm:pgfem3d" paraview &  # to open the paraview on the container
 
  On Mac (use a terminal on the host)
- > open -a XQuartz 
-   X11 Preferences -> Security -> enable "Allow connection from network clients"
+ * XQuartz can be installed from https://www.xquartz.org/.
+ * You may need to log out and log back in after a new XQuartz install.
+ * The homebrew install is untested.
+ * Ensure that X11 Preferences -> Security -> enable "Allow connection from
+   network clients" is clicked in the preference pane.
+
+```
+ > open -a XQuartz
  > defaults write org.macosforge.xquartz.X11 enable_iglx -bool true # without iglx, paraview gets frozen
  > xhost + $(hostname)
  > docker run --net=host -e DISPLAY=$(hostname):0 --volume="$HOME/.Xauthority:/home/cswarm/.Xauthority:rw" "cswarm:pgfem3d" paraview &  # to open the paraview on the container
- 
+```
+
  Once the paraview GUI is open:
  1. File -> Load State -> select the file "parview_displacement_z.pvsm" (or "parview_displacement_y.pvsm") and click OK
  2. Once the paraview state is loaded, point to: out -> box_4CPU -> VTK -> box_..pvtu 
