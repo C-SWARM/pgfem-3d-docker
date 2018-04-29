@@ -31,8 +31,8 @@ For an interactive shell in your container:
 To run the example from the interactive shell:
 
  > cd pgfem-3d-examples 
- > ./local_makeset.pl clean -np 4  # to generate input for 4-core job 
- > ./run.sh                        # to run the example
+ > ./local_makeset.pl clean -np 4  # to generate input (for 4-core job)
+ > ./run.sh 4                      # to run the example (for 4-core job)
  > docker commit CONTAINER_ID cswarm:pgfem3d # to commit the changes to cswarm:pgfem3d; please do this from a terminal on the host; execute "docker ps" for CONTAINER_ID
 
 To visualize the example output, you firt need to launch Paraview (assuming ssh with X11 forwarding to docker server host)
