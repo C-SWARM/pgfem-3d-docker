@@ -53,7 +53,7 @@ To visualize the example output, you firt need to launch Paraview (assuming ssh 
  3. Click onto the "Play" button to see the affect of thermal expansion
 
 
-For any technical assistance, plase contac:
+For any technical assistance, please contac:
 1. Ezra Kissel <ezkissel@indiana.edu>
 2. Kamal K Saha <ksaha@nd.edu>
 3. Luke D'Alessandro <ldalessa@uw.edu>
