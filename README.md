@@ -12,7 +12,7 @@ user@host~$ docker build -t "cswarm:pgfem3d" .
 ```
 
 Docker will pull the required base image and begin building the
-PGFem3D software. This may take a consderable amount of time
+PGFem3D software. This may take a considerable amount of time
 depending on your hardware. 10m to 20m is common.
 
 Software is installed to the /opt prefix in the container image.
@@ -47,10 +47,22 @@ To visualize the resulting output launch paraview.
 cswarm@container~$ paraview &
 ```
 
+On Linux systems, if you see an error similar to the following:
+
+```
+X Error: BadAccess (attempt to access private resource denied) 10
+```
+
+run the following before the above paraview command:
+
+```
+cswarm@container~$ export QT_X11_NO_MITSHM=1
+```
+
 Once the paraview GUI is open:
 1. File -> Load State -> select the file "parview_displacement_z.pvsm" (or "parview_displacement_y.pvsm") and click OK
 2. Once the paraview state is loaded, point to: out -> box_4CPU -> VTK -> box_..pvtu 
-3. Click onto the "Play" button to see the affect of thermal expansion
+3. Click onto the "Play" button to see the effect of thermal expansion
 
 In order to retain changes made within the container, from a second terminal on
 the host (not the terminal inside the container).
@@ -74,7 +86,7 @@ user@host~$ xhost + $(hostname)
 user@host~$ export DISPLAY=$(hostname):0 
 ```
 
-For any technical assistance, please contac:
+For any technical assistance, please contact:
 1. Ezra Kissel <ezkissel@indiana.edu>
 2. Kamal K Saha <ksaha@nd.edu>
 3. Luke D'Alessandro <ldalessa@uw.edu>
