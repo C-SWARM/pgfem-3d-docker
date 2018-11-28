@@ -3,7 +3,7 @@ FROM gcc:7
 MAINTAINER Ezra Kissel <ezkissel@indiana.edu>
 
 RUN apt-get update
-RUN apt-get -y install openmpi-bin libopenmpi-dev git paraview cmake numdiff cpio sudo libxaw7
+RUN apt-get -y install openmpi-bin libopenmpi-dev git paraview numdiff cpio sudo libxaw7
 
 ENV INTEL_MKL=l_mkl_2018.2.199.tgz
 ENV SUITESPARSE=SuiteSparse-5.1.0.tar.gz
